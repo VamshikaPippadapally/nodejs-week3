@@ -1,0 +1,100 @@
+FOR LOOP:
+------------
+
+example1:---
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>JavaScript Loops</h2>
+<p id="demo"></p>
+<script>
+var colours = ["black", "white", "blue", "purple", "brown", "red"];
+var text = "";
+var i;
+for (i = 0; i < colours.length; i++) {
+    text += colours[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+</body>
+</html>
+
+example2:-----
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Demo: for loop</h1>
+<p id="p0"></p>
+<p id="p1"></p>
+<p id="p2"></p>
+<script>
+var arr = [10, 11, 12];
+for (var i = 0; i < 3; i++)
+{
+document.getElementById("p" + i).innerHTML = arr[i];
+}
+</script>
+</body>
+</html>
+
+FOR EACH LOOP:
+-----------------
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to display all the elements in the array.</p>
+<button onclick="names.forEach(myFunction)">click here</button>
+<p id="demo"></p>
+<script>
+demoP = document.getElementById("demo");
+var names = ["vamshika","naveen","nischal","teja"];
+function myFunction(item, index) {
+demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>"; 
+}
+</script>
+</body>
+</html>
+
+FOR IN LOOP:
+-------------
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to see the ouput</p>
+<button onclick="myFunction()">click here</button>
+<p id="demo"></p>
+<script>
+function myFunction() {
+var person = {fname:"Vamshika", lname:"Pippadapally", age:21}; 
+var text = "";
+var x;
+for (x in person) {
+text += person[x] + " ";
+}
+document.getElementById("demo").innerHTML = text;
+}
+</script>
+</body>
+</html>
+
+FOR OF LOOP:
+-------------
+let iterable = ['mini', 'mani', 'moni'];
+
+for (let value of iterable) {
+  console.log(value);
+}
+
+
+
+
+
+
+
+
+
+
+
+

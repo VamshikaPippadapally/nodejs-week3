@@ -1,0 +1,112 @@
+ES6 array functions:
+----------------------
+->filter() method:
+--------------------
+The filter() method creates an array filled with all array elements that pass a test (provided as a function).
+Note: filter() does not change the original array.
+
+example:
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to get large element +.</p>
+<button onclick="myFunction()">click here</button>
+<p id="demo"></p>
+<script>
+var number = [32, 33, 16, 40];
+function checkLarge(number) {
+return number >= 25;
+}
+function myFunction() {
+document.getElementById("demo").innerHTML = number.filter(checkLarge);
+}
+</script>
+</body>
+</html>
+
+->map() method:
+----------------
+The map() method creates a new array with the results of calling a function for every array element.
+The map() method calls the provided function once for each element in an array, in order.
+Note: map() does not execute the function for array elements without values.
+Note: map() does not change the original array.
+
+example:
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to get the square root of each element in the array.</p>
+<button onclick="myFunction()">click here</button>
+<p id="demo"></p>
+<script>
+var numbers = [4, 9, 16, 51];
+function myFunction() {
+x = document.getElementById("demo")
+x.innerHTML = numbers.map(Math.sqrt);
+}
+</script>
+</body>
+</html>
+
+->reduce() method:
+--------------------
+The reduce() method reduces the array to a single value.
+The reduce() method executes a provided function for each value of the array (from left-to-right).
+The return value of the function is stored in an accumulator (result/total).
+Note: reduce() does not execute the function for array elements without values.
+
+example:
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to get the sum of the numbers in the array.</p>
+<button onclick="myFunction()">click here</button>
+<p>Sum of numbers in array: <span id="demo"></span></p>
+<script>
+var numbers = [65, 44, 12, 4,3.5];
+function getSum(total, num) {
+return total + num;
+}
+function myFunction(item) {
+document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+}
+</script>
+</body>
+</html>
+
+
+points to remember:
+---------------------
+->reduce method of the array object is used to reduce the array to one single value.
+->filter executes the callback and check its return value. 
+If the value is true element remains in the resulting array but if the return value is false the element will be removed for the resulting array.
+->Map like filter & foreach takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

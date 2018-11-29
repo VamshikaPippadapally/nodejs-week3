@@ -1,0 +1,105 @@
+TIMING EVENTS:-
+--------------
+->the window objects allow execution of code at specified time intervals called as timing events.
+->The two key methods to use are:
+->setTimeout(function, milliseconds)
+Executes a function, after waiting a specified number of milliseconds.
+->setInterval(function, milliseconds)
+Same as setTimeout(), but repeats the execution of the function continuously.
+
+->setTimeout() accepts a function to execute as its first argument and the delay defined as the second argument. we can also include the additional arguments which will be passed to the function.
+---------------
+example:
+setTimeout(function() {   
+console.log("setTimeout: Hey!");  
+}, 1000);  
+
+
+example2:
+function sample(arg)
+{
+console.log(`arg was => ${arg}`);
+}
+setTimeout(sample,1000,'eg');
+
+->the timeout interval that is set cannot be relied upon to execute after that exact number of milliseconds.
+->timeout cannot be executed sooner than the declared timeout interval.
+setTimeout() returns a timeout object that can be used to reference the timeout that was set.
+
+->setImmediate():-
+------------------
+this method helps in executing the code at the end of the current even loop cycle.
+->this code will execute after any i/o operations in the current event loop and before any timers scheduled for the next event loop.
+->setImmediate() function call will execute before the setImmediate() function argument.
+->Any function passed as the setImmediate() argument is a callback that’s executed in the next iteration of the event loop.
+example:
+---------
+console.log('first');
+setImmediate((arg) => {
+  console.log(`executing immediate: ${arg}`);
+}, 'second');
+console.log('third');
+
+output will be:
+first
+third
+executing immediate:second
+
+->setInterval():-
+-------------------
+if there is a block of code taht should execute multiple times setInterval() can be used to execute that code.
+->setInterval() takes a function argument that will run an infinite number of times with a given millisecond delay as the second argument.
+->we can also include the additional arguments beyond the delay that will passed to the function.
+example:
+----------
+function sampel()
+{
+console.log('infinite times');
+}
+setInterval(sample,1000);//it will execute infinite number of times until it is stopped.
+
+clearing the future:
+--------------------
+all the three timing methods return a timer object that can be used to reference the setTimeout and Immediate object. by passing the said object into the clear function, execution will be halted completely.
+->below is an example to illustrate the above explanation.
+
+const timeoutObj = setTimeout(() => {
+  console.log('timeout beyond time');
+}, 1500);
+
+const immediateObj = setImmediate(() => {
+  console.log('immediately executing immediate');
+});
+
+const intervalObj = setInterval(() => {
+  console.log('infinity');
+}, 500);
+
+clearTimeout(timeoutObj);
+clearImmediate(immediateObj);
+clearInterval(intervalObj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

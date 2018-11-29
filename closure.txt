@@ -1,0 +1,50 @@
+closure in javascript:
+-------------------------
+->according to the definition given by the Douglas Crockford: closure means that an inner function always has access to the variables and parameters of its outer function,
+even after the outer function has returned.
+
+let us take an example in which inner function can access outer variable.
+function OuterFunction() {
+var outerVariable=1;
+function Innerfunction() {
+alert(outerVariable);
+}
+InnerFunction();
+}
+
+now,lets take an example in which innerfunction can access outer variables even if it is executed separately.
+function OuterFunction() {
+var outerVariable=50;
+function InnerFunction() {
+alert(outerVariable);
+}
+return InnerFunction;
+}
+var x=OuterFunction();
+x();//50
+
+->the above example clearly states that return InnerFunction; returns innerFunction from OuterFunction when you call OuterFunction(). and the variable x is the reference of the
+InnerFunction() only, not the OuterFunction(). so when you call x, it can still access the outerVariable which is declared in the OuterFunction().
+this phenomena is called as closure.
+
+example1:
+-----------
+function Count() {
+var count=0;
+function IncrCount() {
+return count+=1;
+};
+return IncrCount;
+}
+var count=Count();
+alert(count());
+alert(count());
+alert(count());
+
+in the above example Count function returns the reference of IncrCount. so the innerfunction increases the count value for several multiple calls.
+
+when to use closure?
+---------------------
+it is basically used in hiding implementation detail in javascript.
+it can also be used to create private variables or functions.
+

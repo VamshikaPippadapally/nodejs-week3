@@ -1,0 +1,111 @@
+CONCEPT OF EVENTS AND EVENT EMITTER:
+--------------------------------------
+
+->event??
+----------
+every action on a computer is an event. It occurs when a connection is made or a file is opened.
+Objects in Node.js can fire events, like the readStream object fires events when opening and closing a file.
+example:
+var fs = require('fs');
+var rs = fs.createReadStream('./sample.txt');
+rs.on('open', function () {
+  console.log('The file is opened');
+});
+
+->Events Module
+-----------------
+Node.js has a built-in module, called "Events", where you can create-, fire-, and listen for- your own events.
+To include the built-in Events module use the require() method. 
+In addition, all event properties and methods are an instance of an EventEmitter object. 
+To be able to access these properties and methods, create an EventEmitter object.
+example:
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
+->The EventEmitter Object
+----------------------------
+You can assign event handlers to your own events with the EventEmitter object.
+In the example below we have created a function that will be executed when a "scream" event is fired.
+To fire an event, use the emit() method.
+example1:
+----------
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+var myEventHandler = function () {
+  console.log('hello');
+}
+
+eventEmitter.on('scream', myEventHandler);
+eventEmitter.emit('scream');
+
+let's discuss about the event emitter in detail with the example taken below
+example2:
+------------
+var events = require('events');
+var em = new events.EventEmitter();
+em.on('FirstEvent', function (data) {
+    console.log('First subscriber: ' + data);
+});
+em.emit('FirstEvent', 'This is my first Node.js event emitter example.');
+
+explanation:
+-------------
+step1:import the events module.
+step2:create an object of eventEmitter class.
+step3:the on() method requires name of the event to handle and the callback function which is called when event is raised.
+step4:the emit() function raises the specified event.
+
+note: an event can be emitted with zero or more arguments.
+we can also use addListener() to subscribe for an event.
+
+example3:
+----------
+var emitter = require('events').EventEmitter;
+var em = new emitter();
+em.addListener('FirstEvent', function (data) {
+    console.log('First subscriber: ' + data);
+});
+em.on('SecondEvent', function (data) {
+    console.log('First subscriber: ' + data);
+});
+em.emit('FirstEvent', 'This is my first Node.js event emitter example.');
+em.emit('SecondEvent', 'This is my second Node.js event emitter example.');
+
+explanation:
+-------------
+here we are using two different methods i.e addListener() and on() method for subscribing the same event.
+with the help of emit() method we are raising the events separately.
+
+The following example shows a simple EventEmitter instance with a single listener. The eventEmitter.on() method is used to register listeners, while the eventEmitter.emit() method is used to trigger the event.
+
+const EventEmitter = require('events');
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () => {
+  console.log('an event occurred!');
+});
+myEmitter.emit('event');
+
+example5:
+-----------
+if you implement a class which is capable of handling events then we have to inherit the eventEmitter class.
+const EventEmitter = require( 'events' );
+class MyClass extends EventEmitter {
+    doSomething() {
+        
+        if ( !err )
+            this.emit( 'success', result );
+        else
+            this.emit( 'error', err );
+    }
+}
+
+
+
+
+
+
+
+
+
+

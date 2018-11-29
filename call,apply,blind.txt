@@ -1,0 +1,37 @@
+CALL vs APPLY vs BIND:
+-----------------------
+->Call invokes the function and allows you to pass in arguments one by one.
+->Apply invokes the function and allows you to pass in arguments as an array.
+->Bind returns a new function, allowing you to pass in array and any number of arguments.
+
+example for call:
+-----------------
+var person1 = {firstName: 'Vamshika', lastName: 'Pippadapally'};
+var person2 = {firstName: 'Naveen', lastName: 'Nerella'};
+function say(greeting) {
+console.log(greeting + ' ' + this.firstName + ' ' + this.lastName);
+}
+say.call(person1, 'Hello'); // Hello Vamshika Pippadapally
+say.call(person2, 'Hello'); // Hello Naveen Nerella
+
+example for apply:
+------------------
+var person1 = {firstName: 'Vamshika', lastName: 'Pippadapally'};
+var person2 = {firstName: 'Naveen', lastName: 'Nerella'};
+function say(greeting) {
+console.log(greeting + ' ' + this.firstName + ' ' + this.lastName);
+}
+say.apply(person1, ['Hello']); // Hello Vamshika Pippadapally
+say.apply(person2, ['Hello']); // Hello Naveen Nerella
+
+example for bind:
+------------------
+var person1 = {firstName: 'Vamshika', lastName: 'Pippadapally'};
+var person2 = {firstName: 'Naveen', lastName: 'Nerella'};
+function say() {
+console.log('Hello ' + this.firstName + ' ' + this.lastName);
+}
+var sayHelloVamshika = say.bind(person1);
+var sayHelloNaveen = say.bind(person2);
+sayHelloVamshika(); // Hello Vamshika Pippadapally
+sayHelloNaveen(); // Hello Naveen Nerella

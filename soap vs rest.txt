@@ -1,0 +1,31 @@
+soap vs rest
+-------------
+
+-> basically there are two web service designs namely soap protocol(simple object access protocol) and rest(representational state transfer).
+-> the main idea behind designing a soap was to provide a mechanism through which we can easily exchange the data built on different platforms and programming languages.
+-> rest was designed to work with the components such as media components, files or objects. webservice which is defined on the principles of rest is called as restful webservice, and this normally uses http,get,post,put and delete.
+
+now we shall discuss the major differences between the soap and rest webservices.
+soap:                                                                                  rest:
+-----                                                                                 -------
+->it refers to simple object access protocol.                                     ->it refers to representational state transfer.                     
+->it also includes a wsdl file which has the required                             ->it is an architectural style in which the webservice can only be treated as the restful service, if it follows the constraints of being a client server, statelwss and cacheable.
+information on what the webservice does.                                          ->rest can make us of soap as underlying protocol for webservices.
+->soap cannot use rest since soap is a protocol and                               ->it uses uniform service locators to access the components on hardware devices.
+rest is an architectural pattern.                                                 ->permits different data format such as HTML,XML,JSON etc.
+->it uses service interfaces to expose its functionality to 
+client applications.
+->can only work with XML format.
+
+Now, we may get a doubt when to use soap and when to use rest?
+---------------------------------------------------------------
+soap is basically used in these instances:
+->asynchronous processing and subsequent invocation: suppose if the client needs a guaranteed level of reliability and security then new soap standard of soap1.2 provides new features like security.
+->formal means of communication: if both the client and server have an agreement on exchange format then soap1.2 gives specification for this type of interaction.
+->stateful operation: if the application has a requirement that state needs to be maintained from 1request to another then soap1.2 supports the requirements.
+
+rest is basically used in these instances:
+->limited resources and bandwidth:since soap messages are heavier in content so we use rest.
+->statelessness: if there is no need to maintain a state of information from one request to another then rest should be used.
+->caching: if there is a need to cache a lot of requests then rest is used.
+->ease of coding: coding the rest services are easier than soap.

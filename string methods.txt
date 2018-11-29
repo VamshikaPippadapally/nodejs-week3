@@ -1,0 +1,140 @@
+STRING METHODS:
+-----------------
+->while dealing with javascript methods and properties are also available to primitive values, because javascript treats primitive values as objects when executing methods and properties.
+ some of the string methods which are available in javascript are:
+->string length
+->finding a string in a string,
+->searching for a string in a string
+->extracting string parts by using three methods such as slice(),substring(),substr().
+->replacing the string content.
+->converting to upper and lower case.
+->concat method.
+->String.trim()
+->extracting string characters using charAt(),charCodeAt(),Property access[].
+->split method 
+
+let us now clearly discuss about each of the string method in detail.
+string length:-it returns the length of the string.
+--------------
+var x="welcome";
+var sln=x.length;
+
+indexOf():-this method returns the index of the position of the first occurrence of a specified text in a string.
+--------
+var str="welcome to my world";
+var pos=str.indexOf("my");//returns the first occurrence
+
+var str="welcome to my world and our world";
+var pos=str.lastIndexOf("world");//returns the last occurrence
+
+search():-this method searches a string for a specified value and returns the position where it found.
+-------
+var str="welcome to my world";
+var pos=str.search("world");
+
+NOTE:we may think that the two methods are equal but they are differed by these:
+->the search() cannot take a second start position argument.
+->the indexOf() cannot take powerful search values(regular expressions).
+
+slice():--this method extracts a part of the string and returns the extracted part in a new string.
+--------
+so here we will be sending the parameters such as index and ending index.
+var str="hi,bye,takecare";
+var res=str.slice(4,9);
+
+->we can also give the parameters as negative.
+->if you won't mention the second parameter ,the method will slice out the rest of the string.
+
+using substr() method:
+----------------------
+->it is similar to slice().
+->the difference is that the second parameter specifies the length of the extracted part.
+var str="my name is vamshika";
+var res=str.substr(4,5); //so here the output will be name,i because the letter n is in the 4th position and from there it takes 5 characters.
+->similarly to the slice method, if you omit the second parameter it will slice out the rest of the string.
+->if the first parameter is negative it will count the positions from the end of the string.
+
+using substring() method:
+--------------------------
+->it is similar to that of the slice method but it doesn't accept the negative parameters.
+
+replace() method:-it replaces a specified value with another value in a string.
+-----------------
+var str="hi people";
+var x=str.replace("people","everyone");
+//in the output the word people will be replaced by the everyone.
+
+->replace() function replaces only the first match by default.
+->by default replace() function is case sensitive.
+->to replace the case insensitive, use a regular expression with an /i flag.
+->to replace all the matches use a /g flag.
+
+
+toUpperCase():--to convert the string into uppercase.
+------------
+var str="vamshika";
+var str1=str.toUpperCase();//by this the string is converted into uppercase.
+
+toLowerCase():-- to convert the string into lowercase.
+-------------
+var str="vamshika";
+var str1=str.toLowerCase();//by this the string is converted into lowercase.
+
+concat():-it basically joins the strings
+---------
+var str="hi";
+var str="hi".concat("","everyone");
+
+string.trim():- it removes white spaces from both the ends.
+-------------
+var str="    hi hello      ";
+alert(str.trim());
+
+split() method:- it basically converts a string to an array
+--------------
+var str="h,e,l,l,o";
+str.split(",");
+str.split(" ");
+str.split("|");
+
+->ECMAScript 5(2009) allows property access[] on strings.
+var str="hello";
+str[0];//returns h
+
+charAt() method:- returns the character at that particular position.
+----------------
+var str="vamshika";
+str.charAt(5);//returns h
+
+charCodeAt() method:- returns the unicode of the character at a specified index in a string.
+-------------------
+var str="HELLO";
+str.charCodeAt(0);//returns the ascii value of that particular character in that position.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

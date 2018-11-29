@@ -1,0 +1,126 @@
+ASYNC AND AWAIT:
+------------------
+->callbacks were the only official way provided by the node to run one function after another.
+->as node architecture is single threaded and aynchronous, the community has introduced callback functions,after the first function run is completed.
+example of callback:
+----------------------
+let add=function(a,b)
+{
+    return a+b;
+};
+let multiply=function(a,b)
+{
+    return a*b;
+};
+let result=function(num1,num2,callback)
+{
+    return callback(num1,num2);
+};
+console.log(result(2,3,multiply));
+
+->the problem with these kind of code create messyness when there are several functions. this situation is called as callback hell since we are calling the callback functions continuously.
+->so to avoid this kind of scenario ,the concept of promises and function chaining was introduced.
+
+lets take an example in which we donot use the concept of async-await:
+----------------------------------------------------------------------
+function func1(req,res)
+{
+return request.get('http://localhost:3000)
+.catch((err) =>{
+     console.log('found error');
+}).then((res) =>{
+   console.log('get request returned.');
+});
+
+explanation:
+---------------
+->the above program uses the concept of function chaining instead of callbacks.by this the readability and understandability can be improved.
+->it basically says to get the localhost:3000 and it also catches the error if any,suppose if there is no error it implements the following statement as we mentioned above.
+
+
+with node v8 engine the concept of async-await officially came into existence to deal with the promises and function chaining.
+->here the functions need not be chained but await the function that returns the promise.but the function async needs to be declared before awaiting a function returning a promise.
+example:
+----------
+async function fun1(req, res){
+  let response = await request.get('http://localhost:3000');
+    if (response.err) { console.log('error');}
+    else { console.log('fetched response');
+}
+
+explanation:
+-------------
+the code basically asks the engine to wait for the request.get() to complete before going to the next line.
+->request.get() is a function which returns the promise for which we need to await.
+->before async-await make sure that the functions are running in the desired sequence.
+
+example3:
+---------
+function double(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x * 2);
+    }, 2000);
+  });
+}
+
+async function addAsync(x) {
+  const a = await double(10);
+  const b = await double(20);
+  const c = await double(30);
+  return x + a + b + c;
+}
+
+addAsync(10).then((sum) => {
+  console.log(sum);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+NULL vs UNDEFINED vs UNDECLARED:
+---------------------------------
+
+->program to understand the above concepts
+
+example1:
+try{
+  undeclaredVar
+}
+catch(e) {
+  if(e.name === 'ReferenceError') {
+    console.log('var is undeclared')
+  }
+}
+
+// check if undefined
+var undefinedVar
+
+if (typeof undefinedVar === 'undefined') {
+   console.log('var is undefined')
+}
+
+// check if null
+var nullVar = null
+
+if (nullVar === null) {
+   console.log('var is null')
+}
+note:
+-----
+->undefined variables are those that are not assigned any value but declared in the program. if we try to read the value, an error message "undefined" is displayed. 
+->undeclared variables are those that are not declared in the program. But if undeclared variables are assigned some value then implicit declaration is done.
+->null is a value of a variable and is a type of object.
+->undeclared variables don’t even exist
+->undefined variables exist, but don’t have anything assigned to them
+->null variables exist and have null assigned to them

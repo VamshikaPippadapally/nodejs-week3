@@ -1,0 +1,126 @@
+DIFFERENT WAYS OF CREATING OBJECTS:
+---------------------------------------
+As we know that javascript is an object oriented language and there are different ways to instantiate objects.
+
+->using functions as class:
+---------------------------
+we define a classical javascript function and create an object using new keyword. the properties and methods of the function are created using this keyword.
+example:
+<script> 
+    // Function acting as a Class. 
+    function copyClass(name, age) 
+   { 
+        this.name = name; 
+        this.age = age; 
+        this.printInfo = function() 
+   { 
+            console.log(this.name); 
+            console.log(this.age); 
+        } 
+    } 
+   
+var obj = new copyClass("Vamshika", 20);  
+obj.printInfo(); 
+</script> 
+
+explanation:
+--------------
+In this example we are creating a function which is similar to that of the class, we are using two parameters namely age and the name.
+'this' keyword used here helps in differentiating the name and age of the class to the name and age of the arguments that are being supplied.
+the method printInfo is used for printing the values of the parameters.
+we will then create an object obj of the class and then initialise it and call it.
+
+
+->using object literals:
+-------------------------
+this way is the easiest way in creating the objects.
+example:
+<script>  
+    var obj = { 
+        name : "", 
+        age : "", 
+        printInfo : function() { 
+            console.log(this.name); 
+            console.log(this.age); 
+        } 
+    } 
+obj.name = "Vamshika"; 
+obj.age = 20; 
+obj.printInfo(); 
+</script> 
+
+explanation:
+This method works same as the previous one but instead of bundling the parameters ( name and age ) and the method ( printInfo ) inside of a function, we bundle them in the object itself, initialize the object and simply use the methods.
+
+->singleton using a function:
+--------------------------------
+this is the combination of the other two which we already saw.
+example:
+<script>  
+    var obj = new function() { 
+        this.name = ""; 
+        this.age = ""; 
+        this.printInfo = function() { 
+            console.log(this.name); 
+            console.log(this.age); 
+        }; 
+    }  
+obj.name = "Vamshika"; 
+obj.age = 20;  
+obj.printInfo(); 
+</script>
+
+explanation:
+we bundle the methods and parameters inside a function but don’t declare a separate function for it (Like copyClass in method 1). Instead we simple use the function structure to declare a object.
+
+note:
+basically we create objects in two ways i.e literal form and constructed form.
+->literal form:
+var obj = {
+  key1: value1,
+  key2: value2,
+  ...
+};
+
+->constructed form using object constructor function:
+function obj(value1, value2, ...) {
+    this.key1 = value1;
+    this.key2 = value2;
+    ...
+}
+
+->constructed form using new keyword:
+var obj = new Object();
+obj.key1 = value1;
+obj.key2 = value2;
+...
+
+
+
+Differences between using Object Literals and the Constructed Form:
+--------------------------------------------------------------------- 
+Both the constructed form and literal form result in creating exactly the same sort of object i.e. the end result is same for both the methodologies. 
+The only difference between the both is that object literals can take care of several key-value pairs at once and thus is more convenient while on the other hand with the constructed-form objects, we must add the properties one-by-one in separate statements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

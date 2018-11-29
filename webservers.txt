@@ -1,0 +1,98 @@
+creating a webserver using http module in node.js:
+-----------------------------------------------------
+The HTTP module can create an HTTP server that listens to server ports and gives a response back to the client.
+Use the createServer() method to create an HTTP server:
+
+Example:-
+var http = require('http');
+http.createServer(function (req, res) {
+res.write('Hello World!');
+res.end(); 
+}).listen(8080);
+
+setting up a http apache webserver:
+------------------------------------
+->we can install the apache http server using the following command
+sudo apt-get install apache2 
+
+->Use the following command to list the available modules of the Apache HTTP server.
+
+/etc/init.d/apache2 -l
+/etc/init.d/apache2 restart
+
+->The main configuration file for the Apache Http server is the /etc/apache2/apache2.conf file. 
+->The error log of Apache is located in the /var/log/apache2/error.log file.
+->Apache HTTP can run in different modes.The selected mode is compiled into the server and can be seen via the following command.
+sudo apachectl -V | grep -i mpm
+
+->The configuration for the event mpm is stored in /etc/apache2/mods-available/mpm_event.conf. 
+Configure only the module which your server is using.
+
+The following listing shows a configuration for a web server using the event module.
+
+<IfModule mpm_event_module>
+    StartServers             200
+        ServerLimit      600
+    MinSpareThreads      600
+    MaxSpareThreads      2000
+    ThreadLimit          64
+    ThreadsPerChild      50
+    MaxRequestWorkers     15000
+    MaxConnectionsPerChild   10
+</IfModule>
+
+creating a nginx webserver:
+-------------------------------
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+
+Regardless of the installation source, server configuration files will contain a server block (or blocks) for a website. 
+For example:
+server {
+    listen         80 default_server;
+    listen         [::]:80 default_server;
+    server_name    example.com www.example.com;
+    root           /var/www/example.com;
+    index          index.html;
+    try_files $uri /index.html;
+}
+
+Apache webServer:
+-----------------------
+This is the most popular web server in the world developed by the Apache Software Foundation. 
+Apache web server is an open source software and can be installed on almost all operating systems 
+including Linux, UNIX, Windows, FreeBSD, Mac OS X and more. About 60% of the web server machines run the Apache Web Server.
+
+NGINX webserver:
+-----------------
+NGINX is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. 
+It started out as a web server designed for maximum performance and stability. In addition to its HTTP server capabilities.
+NGINX can also function as a proxy server for email (IMAP, POP3, and SMTP) and a reverse proxy and load balancer for HTTP, TCP, and UDP servers.
+
+
+
+
+
+
+
+
+
+
+

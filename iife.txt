@@ -1,0 +1,113 @@
+Immediately invoked function expression(IIFE):
+-----------------------------------------------
+-> it is one of the most popular design patterns in javscript.
+->As we know that the function in the javascript creates a local scope. so if we define variables and function inside a function which cannot be accessable outside of that function.
+->this surely disturbs the global variables or functions by unknowingly giving the same name to the variables and functions as the global variable and function names.
+->lets take an example to clearely explain this scenario.
+--------------------------------------------------------
+->there are multiple .js files in your application written by multiple developers. single javascript file has many functions and these multiple javascript files will result in large number of functions.
+so there is a chance of having the same function name in different .js files included in a single web page which will pollute the global scope.
+
+consider the examples given below:
+
+example:app1.js                                             example:app2.js
+var x="vamshika";                                           var x="pippadapally";
+function display(name)                                      function display(name)
+{                                                           {
+alert("app1.js:" +name);                                    alert("app2.js:"+name);
+}                                                           }                                                          
+display(x);                                                 display(x);
+
+now if you include these js files in the web page, lets see the problem associated with this.
+example:script tag into <head> tag:
+------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JavaScript Demo</title>
+    <script src="/app1.js"></<script> 
+    <script src="/app2.js"></<script> 
+</head>
+<body>
+    <h1> IIFE Demo</h1>
+</body>
+</html>
+
+if you run the above example everytime the display() function in app2.js will be called because app2.js is included after the app1.js in a web page. so this means javascript considers last definition of a function in case of both are having the same name.
+->this results in the usage of iife by having its own scope and restricting functions and variables to become global. the functions and variables declared inside the iife will never pollute the global scope even if the functions have the same name.
+
+what is iife?
+---------------
+->the acronym of iife is immediately invoked function expression. 
+-> it is a function expression that automatically invokes after the completion of the definition. the paranthesis plays an important role in iife pattern. but in javascript paranthesis cannot contain statements.
+lets take an example to clearly understand the concept of why to use iife.
+example:iife
+------------
+as the paranthesis doesn't allow the declaration so we should write only the anonymous function as below.
+(function() {
+//write your js code here
+}); 
+in the above example we didn't call the anonymous function so here in the below function we are using the () operator to call the anonymous function immediately after completion of its definition
+ (function() {
+//write your js code here
+}) ();
+
+so this is called as iife. you can easily write the functions and variables inisde iife without worrying about polluting the global scope.
+now here we are wrapping the code in app2.js in the iife as shown in the below:
+ (function() {
+var x="pippadapally";
+function display(name)
+{
+alert("app2.js:"+name);
+}
+display(x);
+})();
+
+we can also pass the arguments in iife as shown below.
+var x="vamshika";
+(function(name) {
+function display(name)
+{
+alert("app2.js:"+name);
+}
+display(name);
+})(x);
+
+
+some of the advantages of iife:
+-------------------------------
+->it doesn't create unnecessary global variables and functions.
+->functions and variables defined in iife do not conflict with other functions and variables even if they have the same name.
+->organise javascript code.
+->it maintains the javascript code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

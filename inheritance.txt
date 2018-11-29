@@ -1,0 +1,55 @@
+INHERITANCE IN JAVASCRIPT:
+----------------------------
+->inheritance is an important concept in object oriented programming in which the methods from the base class get copied into the derived class.
+->coming to the inheritance in javascript it is supported by the prototype object. inheritance in javascript is known as "prototypal inheritance" or "behaviour delegation".
+ lets take an example by which we can achieve the inheritance in javascript:
+------------------------------------------------------------------------------
+function Person(firstName, lastName) {
+this.FirstName= firstName || "unknown";
+this.LastName=lastName || "unknown";
+};
+Person.prototype.getFullName=function() {
+return this.FirstName + " " +this.LastName;
+}
+in the above example we have added the getFullName method to its prototype object.
+Now we want to create the Student class which is inherited from the Person class so that we donot have to redefine the FirstName, LastName and getFullName() method in Student class.
+
+function Student(firstName,lastName,schoolName,grade)
+{
+Person.call(this,firstName,lastName);
+this.SchoolName=schoolName||"unknown";
+this.Grade=grade||0;
+}
+Student.prototype=new Person();
+Student.prototype.constructor=Student;
+
+here we are setting the student.prototype to newly created person object. the new keyword creates an object of Person class and also assigns the Person.prototype to new object's prototype object.
+-> it finally assigns the newly created object to Student.prototype object.
+now we are creating an object of Student that uses methods and properties of the Person as shown in the below:
+--------------------------------------------------------------------------------------------------------------
+function Person(firstName, lastName) {
+    this.FirstName = firstName || "unknown";
+    this.LastName = lastName || "unknown";            
+}
+
+Person.prototype.getFullName = function () {
+    return this.FirstName + " " + this.LastName;
+}
+function Student(firstName, lastName, schoolName, grade)
+{
+    Person.call(this, firstName, lastName);
+
+    this.SchoolName = schoolName || "unknown";
+    this.Grade = grade || 0;
+}
+
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+
+var std = new Student("Vamshika","Pippadapally", " Sri Chaitanya", 5);
+            
+alert(std.getFullName()); // Vamshika Pippadapally
+alert(std instanceof Student); // true
+alert(std instanceof Person); // true
+
+
