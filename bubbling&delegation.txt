@@ -1,0 +1,145 @@
+EVENT BUBBLING AND EVENT DELEGATION:
+-------------------------------------
+->Event Bubbling is the most used terminology in JavaScript at the time of event flow. 
+->In the JavaScript, Event Flow process is completed by three concepts :
+Event Capturing.
+Event Target.
+Event Bubbling.
+
+event??
+--------
+->JavaScript's interaction with HTML is handled through events that occur when the user or the browser manipulates a page.
+->When the page loads, it is called an event. 
+->When the user clicks a button, that click too is an event. 
+->Other examples include events like pressing any key, closing a window, resizing a window, etc.
+example: onclick Event
+This is the most frequently used event type which occurs when a user clicks the left button of his mouse.
+
+event flow?
+--------------
+->event flow is the order in which the event is received on the web page.
+->Basically event flow occurs in two types.
+->Top to Bottom(Event Capturing) and other one is Bottom to Top (Event Bubbling). 
+->both of them apply opposite approach. 
+->Internet Explorer 4 adopts the Event Bubbling approach and Netscape communicator 4 adopts Event Capturing approach.
+
+event bubbling?
+---------------- 
+->Event Bubbling is the phenomena in which the event starts from the deepest element or target element to its parents, then all its ancestors which are on the way to bottom to top. 
+->At present, all the modern browsers have event bubbling as the default way of event flow.
+example:
+-----------
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title> Example for Event Bubbling</title>
+</head>
+<body>
+<div id="tree">
+<div id="stem">
+<button id="root">Click here</button>
+</div>
+</div>
+<script>
+    var tree = document.querySelector('#tree');
+    
+      tree.addEventListener('click', function(){
+        console.log("Tree clicked");
+      });
+	  var stem = document.querySelector('#stem');
+    
+      stem.addEventListener('click', function(){
+        console.log("Stem clicked");
+      });
+	  
+    var root = document.querySelector('#root');
+    
+      root.addEventListener('click', function(){
+        console.log("Root clicked");
+      });
+</script>
+</body>
+</html>
+
+output:
+--------
+Root clicked
+
+Stem clicked
+ 
+Tree clicked
+
+Event delegation:
+-------------------
+->event delegation is a simple technique by which you add a single event handler to a parent element 
+->in order to avoid adding event handlers to multiple child elements.
+->It performs much better in applications where more events are generated.
+->It saves the memory, and makes our code simpler and easier to understand.
+
+example:
+----------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title> Example for Event Delegation</title>
+</head>
+<body>
+<h2> Rainbow Colours</h2>
+  <div class="colours">
+       <ol>
+           <li>violet</li>
+           <li>indigo</li>
+           <li>blue</li>
+           <li>green</li>
+           <li>yellow</li>
+           <li>orange</li>
+	   <li>red</li>
+       </ol>
+   </div>
+<script>
+(function() {
+var colours = document.querySelector('#colours');
+colours.addEventListener('click', (e)=>{
+if (e.target) {
+console.log(e.target.innerText,' was clicked'');
+}
+}, false);
+})();
+
+</script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
