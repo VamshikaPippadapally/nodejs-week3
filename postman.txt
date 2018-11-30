@@ -1,0 +1,53 @@
+USING POSTMAN FOR TESTING API:
+--------------------------------
+->API is a defined set of rules, which contains clearly defined methods of communication. 
+->API helps different software components to interact with each other.
+->API testing involves testing the collection of APIs and checking if they meet expectations for functionality, reliability, performance, and security and returns the correct response.
+->API testing is used to determine whether the output is well-structured and useful to another application or not, checks the response on basis of input (request) parameter,
+ and checks how much time the API is taking to retrieve and authorise the data too.
+
+Postman is an application for testing APIs, by sending request to the web server and getting the response back.
+
+->It allows users to set up all the headers and cookies the API expects, and checks the response.
+->Productivity can be increased using some of the Postman features, which are listed below.
+->A test in Postman is fundamentally a JavaScript code, which run after a request is sent and a response has been received from the server.
+
+In API calls, we mainly use two things:
+HTTP Request--Request is the simplest way possible to make http calls.
+HTTP Request contains  Request Method, Request URL, Request Headers, Request Body, Pre-request Script and Tests.
+
+Request Methods--Request methods defines the type of request to be made.
+the following are the request methods which are used oftenly:
+POST Request--For Creating Or Updating data
+PUT Request---For Updating data
+GET Request---For Retrieving/Fetching data 
+DELETE Request-For Deleting data.
+
+Request URL--It is where we make the http request.
+
+Request Headers-- request headers mainly contains key-value of the application.the two keyvalues are mentioned below:
+->Content-Type--A content-type describes the format of object data.
+->Authorization---An authorization token, included with requests, is used to identify the requester.
+
+Request Body--It contains the data, if any (depends on type of request method), to be sent with request. 
+
+Pre-request Script--Pre-request script is a piece of code which is executed before the request is sent.
+Example: In order to use Postman BDD  with request, one needs to define the below code in Pre-request Script.
+If the environment variable for “postman_bdd_path” is not set, then request, where pre-request script is defined, will use it from the request.
+
+Tests in Postman--In Postman one can write and run tests for each request using the JavaScript language.
+
+-> HTTP Response  On sending request, API sends the response which consists of the Body, Cookies, Headers, Tests, Status code, and API Response Time.
+Postman organises body and headers in different tabs. The status code with the time taken to complete the API call is displayed in another tab.
+
+There are many status code, from which we can verify the response.
+200 -successful request.
+201 -successful request and data was created.
+204 -Empty Response.
+400 -Bad Request. 
+401 -Unauthorized access. 
+403 -Forbidden, Access denied.
+404 -data not found.
+405 -Method Not Allowed or Requested method is not supported.
+500 -Internal Server Error.
+503 -Service Unavailable.
